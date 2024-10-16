@@ -1,0 +1,17 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Run Sam's Test Agent Workflow
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  run-hamming-workflow:
+    uses: HammingHQ/hamming-ci-workflow/.github/workflows/hamming_run_agent.yml@main
+    with:
+      agent_id: ${{ vars.AGENT_ID }}
+      dataset_id: ${{ vars.DATASET_ID }}
+      to_number: ${{ vars.TO_NUMBER }}
+    secrets:
+      HAMMING_API_KEY: ${{ secrets.HAMMING_API_KEY }}
